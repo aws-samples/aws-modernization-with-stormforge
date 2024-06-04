@@ -8,7 +8,7 @@ weight: 7
 
 With the **StormForge Applier** installed, you can now apply Optimize Live's recommendations directly from the StormForge UI.
 
-If you deployed the StormForge sample application earlier in the workshop, you can navigate back to **"Workloads"** > **"optlive-showcase-app"**
+If you deployed the StormForge sample application earlier in the workshop, you can navigate back to **"Workloads"** > **"optlive-showcase-app"** (or any other test service on your choice):
 
 ![StormForge Applier](../images/stormforge-applier-1350x355.png "StormForge Applier")
 
@@ -16,9 +16,9 @@ Click the **Apply Now** button
 
 Optimize Live will now make the patch available for the StormForge Applier in our cluster and the patch will be applied directly to the workload.
 
-We can confirm that the patch has been applied by running the following command:
-
-    kubectl rollout history -n default deploy/optlive-showcase-app
+We can confirm that the patch has been applied by running the following command `kubectl rollout history -n <namespace> deploy/<app name>`. For our sample application it would be:
+     
+     kubectl rollout history -n default deploy/optlive-showcase-app
 
 You should see an output that looks like this:
 
@@ -29,7 +29,7 @@ You should see an output that looks like this:
 
 You can see that Optimize Live is listed as the `CHANGE-CAUSE` for the latest rollout.
 
-We can also use the following command to inspect the running configuration of the Pod:
+We can also use the following command to inspect the running configuration of the Pod `kubectl describe pod -n <namespace> <pod name>`, for example:
 
     kubectl describe pod -n default optlive-showcase-app123456abcde
 
